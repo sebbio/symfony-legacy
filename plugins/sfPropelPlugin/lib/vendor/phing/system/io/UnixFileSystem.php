@@ -154,7 +154,7 @@ class UnixFileSystem extends FileSystem {
             return $parent;
         }
 
-        if ($child{0} === '/') {
+        if ($child[0] === '/') {
             if ($parent === '/') {
                 return $child;
             }
