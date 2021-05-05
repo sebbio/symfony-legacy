@@ -51,7 +51,7 @@ class sfWidgetFormI18nChoiceCountry extends sfWidgetFormChoice
     {
       $countries = array_merge(array('' => true === $addEmpty ? '' : $addEmpty), $countries);
     }
-
+    asort($countries);
     $this->setOption('choices', $countries);
   }
 }
