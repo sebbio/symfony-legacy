@@ -289,8 +289,8 @@ class DebugPDO extends PropelPDO
 	 * @param      array One or more key=>value pairs to set attribute values for the PDOStatement object that this method returns.
 	 * @return     PDOStatement
 	 */
-	public function prepare($sql, $driver_options = array())
-	{
+	public function prepare(string $sql, array $driver_options = array()): PDOStatement|false
+  {
 		$debug	= $this->getDebugSnapshot();
 		$return	= parent::prepare($sql, $driver_options);
 		
@@ -306,7 +306,7 @@ class DebugPDO extends PropelPDO
 	 * 
 	 * @return     int
 	 */
-	public function exec($sql)
+	public function exec(string $sql): int|false
 	{
 		$debug	= $this->getDebugSnapshot();
 		$return	= parent::exec($sql);
@@ -327,7 +327,7 @@ class DebugPDO extends PropelPDO
 	 * @see        http://php.net/manual/en/pdo.query.php for a description of the possible parameters.
 	 * @return     PDOStatement
 	 */
-	public function query(string $query, ?int $fetchMode = null, mixed ...$fetchModeArgs)
+	public function query(string $query, ?int $fetchMode = null, mixed ...$fetchModeArgs): PDOStatement|false
 	{
 		$debug	= $this->getDebugSnapshot();
 		$args	= func_get_args();

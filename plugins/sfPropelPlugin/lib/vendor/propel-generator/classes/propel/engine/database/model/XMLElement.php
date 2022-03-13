@@ -90,13 +90,15 @@ abstract class XMLElement {
 	 * This is to support the default value when used w/ a boolean column.
 	 * @return     value
 	 */
-	protected function booleanValue($val)
+	protected function booleanValue($val) : bool
 	{
 		if (is_numeric($val)) {
 			return (bool) $val;
-		} else {
-			return (in_array(strtolower($val), array('true', 't', 'y', 'yes'), true) ? true : false);
 		}
+    if (is_null($val)) {
+      return false;
+    }
+	  return (in_array(strtolower($val), array('true', 't', 'y', 'yes'), true) ? true : false);
 	}
 
 	/**

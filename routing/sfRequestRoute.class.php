@@ -57,7 +57,7 @@ class sfRequestRoute extends sfRoute
     }
 
     // enforce the sf_method requirement
-    if (in_array(strtolower($context['method']), $this->requirements['sf_method']))
+    if (in_array(strtolower($context['method']), isset($this->requirements['sf_method']) ? $this->requirements['sf_method'] : []))
     {
       return $parameters;
     }

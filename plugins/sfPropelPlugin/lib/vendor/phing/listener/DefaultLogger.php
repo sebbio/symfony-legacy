@@ -256,9 +256,10 @@ class DefaultLogger implements StreamRequiredBuildLogger {
         if ($minutes > 1) {
             return sprintf("%1.0f minute%s %0.2f second%s",
                                     $minutes, ($minutes === 1 ? " " : "s "),
-                                    $seconds - floor($seconds/60) * 60, ($seconds%60 === 1 ? "" : "s"));
+                                    $seconds - floor($seconds/60) * 60, ((int)$seconds%60 === 1 ? "" : "s"));
         } else {
-            return sprintf("%0.4f second%s", $seconds, ($seconds%60 === 1 ? "" : "s"));
+            return sprintf("%0.4f second%s", $seconds, 
+            ((int)$seconds%60 === 1 ? "" : "s"));
         }
     }
     
